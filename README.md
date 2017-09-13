@@ -6,8 +6,8 @@ The source code has been written in python 2.7.12
 
 
 ```
-e = BigInt(999) 
->>> [9,9,9]
+>>> A = BigInt(999) 
+>>> '999'
 
 ```
 
@@ -17,8 +17,8 @@ e = BigInt(999)
 
 The method adds one to the number and displays it accordingl
 ```
-e.addOne()
->>> [1,0,0,0]
+>>> A.addOne()
+>>> '1000'
 
 ```
 
@@ -27,8 +27,10 @@ e.addOne()
 
 Adds other provided big int to original big int
 ``` 
-e.adds(99)
->>> [1,0,9,8]
+>>> B = BigInt(99)
+>>> A.adds(B)
+>>> '1098'
+>>> C = BigInt(A.adds(B))
 
 ```
 
@@ -38,7 +40,11 @@ e.adds(99)
 This method adds all the other provided big ints to the original big int. 
 Input can be multiple values
 ```
-e.addAll(1,0,99999,12345)
->>> [1, 1, 3, 3, 4, 4]
+>>> B = BigInt(1234)
+>>> C = BigInt(99999)
+>>> D = BigInt(0)
+>>> A.addAll(B, C, D)
+>>> '102233'
+>>> G = BigInt(A.addAll(B, C, D))
 
 ```
