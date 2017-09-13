@@ -13,6 +13,7 @@ class BigInt:
         print self.num
     def addOne(self):
         '''
+        Q1
         The method adds one to the number and displays it accordingly
         e.addOne()
         >>> [1,0,0,0]
@@ -36,6 +37,7 @@ class BigInt:
         return bx
     def adds(self, by, multiple = False, test = [0]):
         '''
+        Q2
         Adds other provided big int to original big int
         e.adds(99)
         >>> [1,0,9,8]
@@ -80,6 +82,7 @@ class BigInt:
         return sum_[::-1]
     def addALL(self, *args):
         '''
+        Q3
         This method adds all the other provided big ints to the original big int. 
         Input can be multiple values
         e.addAll(1,0,99999,12345)
