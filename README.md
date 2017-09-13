@@ -32,7 +32,7 @@ e.adds(99)
 
 ```
 
-**addALL(numbers)**
+**addAll(numbers)**
 
 
 This method adds all the other provided big ints to the original big int. 
