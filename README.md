@@ -6,8 +6,7 @@ The source code has been written in python 2.7.12
 
 
 ```
->>> A = BigInt(999) 
->>> '999'
+>>> A = BigInt('999') 
 
 ```
 
@@ -27,7 +26,7 @@ The method adds one to the number and displays it accordingl
 
 Adds other provided big int to original big int
 ``` 
->>> B = BigInt(99)
+>>> B = BigInt('99')
 >>> A.adds(B)
 >>> '1098'
 >>> C = BigInt(A.adds(B))
@@ -40,9 +39,9 @@ Adds other provided big int to original big int
 This method adds all the other provided big ints to the original big int. 
 Input can be multiple values
 ```
->>> B = BigInt(1234)
->>> C = BigInt(99999)
->>> D = BigInt(0)
+>>> B = BigInt('1234')
+>>> C = BigInt('99999')
+>>> D = BigInt('0')
 >>> A.addAll(B, C, D)
 >>> '102233'
 >>> G = BigInt(A.addAll(B, C, D))
