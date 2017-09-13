@@ -1,70 +1,93 @@
 class BigInt:
+
     '''
     The class internally stores the input number in form of an integer list.
-    e = BigInt(999) 
-    >>> [9,9,9]
+    >>> A = BigInt(999) 
+
     '''
     def __init__(self, num):
+        
         '''
         Q0:
         Constructor constructor method, saves the original number.
+        
         '''
         self.num = list(map(int, list(str(num))))
+        
     def addOne(self):
+        
         '''
         Q1
         The method adds one to the number and displays it accordingly
-        e.addOne()
-        >>> [1,0,0,0]
+        >>> A.addOne()
+        >>> '1000'
+        
         '''
-        bx = self.num[:]
-        for i in range(len(bx))[::-1]:
-            temp = bx[i]
+        temp_Big_int = self.num[:]
+        for i in range(len(temp_Big_int))[::-1]:
+            temp = temp_Big_int[i]
             if i != 0:
                 temp += 1
                 if temp/10 == 0:
-                    bx[i] = temp
+                    temp_Big_int[i] = temp
                     break
                 else:
-                    bx[i] = temp%10
+                    temp_Big_int[i] = temp%10
             else:
                 temp += 1
-                bx[i] = temp%10
-                gec = bx[::-1]
-                gec.append(temp/10)
-                bx = gec[::-1]
-        return bx
+                temp_Big_int[i] = temp%10
+                rev = temp_Big_int[::-1]
+                rev.append(temp/10)
+#                 temp_Big_int = rev[::-1]
+                self.num = rev[::-1]
+                
+        num_string = reduce((lambda x, y: str(x)+str(y)), sum_[::-1])
+        return num_string
+    
     def adds(self, bigint, multiple = False, inp = [0]):
+        
         '''
         Q2
         Adds other provided big int to original big int
-        e.adds(99)
-        >>> [1,0,9,8]
+
+        >>> B = BigInt(99)
+        >>> A.adds(B)
+        >>> '1098'
+
         '''
         sum_ = []
         carry = 0
+        
         if multiple == False:
-            bx = self.num[:]
+            bigint_x = self.num[:]
+            
         if multiple == True:
-            bx = inp
+            bigint_x = inp
             
 #         by = list(map(int, list(str(by))))
-        by = bigint.num
-        if len(bx) > len(by):
-            x, y = bx, by
-        if len(bx) < len(by):
-            x, y = by, bx
-        else: x, y = bx, by
+        bigint_y = bigint.num
+    
+        if len(bigint_x) > len(bigint_y):
+            x, y = bigint_x, bigint_y
+            
+        if len(bigint_x) < len(bigint_y):
+            x, y = bigint_y, bigint_x
+            
+        else: x, y = bigint_x, bigint_y
+            
         for i, j in zip(range(len(x))[::-1], range(len(y))[::-1]):
             tempx = x[i]
             tempy = y[j]
             temp = tempx + tempy + carry
+            
             if temp/10 != 0:
                 sum_.append(temp%10)
                 carry = temp/10
+                
             else:
                 sum_.append(temp)
                 carry = 0
+                
         if len(x) != len(y):
             for k in range(0,len(x)-len(y))[::-1]:
                 tempx = x[k]
@@ -79,23 +102,28 @@ class BigInt:
         if carry !=0: sum_.append(carry)
         else: pass
         
-        string_num = reduce((lambda x, y: str(x)+str(y)), sum_[::-1])
-        return string_num
+        self.num = sum_[::-1]
+        num_string = reduce((lambda x, y: str(x)+str(y)), sum_[::-1])
+        return num_string
     
     def addAll(self, *args):
+
         '''
         Q3
         This method adds all the other provided big ints to the original big int. 
         Input can be multiple values
-        e.addAll(1,0,99999,12345)
-        >>> [1, 1, 3, 3, 4, 4]
+
+        >>> C = BigInt(99999)
+        >>> D = BigInt(1234)
+        >>> A.addAll(B, C, D)
+        >>> '102232'
         
         '''
-        bx = self.num[:]
-        sum_ = bx
-
+        sum_ = self.num[:]
+        
         for i in args:
             sum_ = list(map(int, self.adds(i, multiple=True, inp=sum_)))
-
-        string_num = reduce((lambda x, y: str(x)+str(y)), sum_)
-        return string_num
+        
+        self.num = sum[:]
+        num_string = reduce((lambda x, y: str(x)+str(y)), sum_)
+        return num_string
