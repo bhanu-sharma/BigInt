@@ -80,7 +80,7 @@ class BigInt:
 
 
         return sum_[::-1]
-    def addALL(self, *args):
+    def addAll(self, *args):
         '''
         Q3
         This method adds all the other provided big ints to the original big int. 
