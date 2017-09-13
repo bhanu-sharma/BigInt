@@ -10,7 +10,6 @@ class BigInt:
         Constructor constructor method, saves the original number.
         '''
         self.num = list(map(int, list(str(num))))
-        print self.num
     def addOne(self):
         '''
         Q1
@@ -35,7 +34,7 @@ class BigInt:
                 gec.append(temp/10)
                 bx = gec[::-1]
         return bx
-    def adds(self, by, multiple = False, inp = [0]):
+    def adds(self, bigint, multiple = False, inp = [0]):
         '''
         Q2
         Adds other provided big int to original big int
@@ -49,7 +48,8 @@ class BigInt:
         if multiple == True:
             bx = inp
             
-        by = list(map(int, list(str(by))))
+#         by = list(map(int, list(str(by))))
+        by = bigint.num
         if len(bx) > len(by):
             x, y = bx, by
         if len(bx) < len(by):
@@ -75,11 +75,13 @@ class BigInt:
                 else:
                     sum_.append(temp)
                     carry = 0
+                    
         if carry !=0: sum_.append(carry)
         else: pass
-
-
-        return sum_[::-1]
+        
+        string_num = reduce((lambda x, y: str(x)+str(y)), sum_[::-1])
+        return string_num
+    
     def addAll(self, *args):
         '''
         Q3
@@ -87,10 +89,13 @@ class BigInt:
         Input can be multiple values
         e.addAll(1,0,99999,12345)
         >>> [1, 1, 3, 3, 4, 4]
+        
         '''
         bx = self.num[:]
         sum_ = bx
+
         for i in args:
-            #by = list(map(int, list(str(i))))
-            sum_ = self.adds(i, multiple=True, inp=sum_)
-        return sum_
+            sum_ = list(map(int, self.adds(i, multiple=True, inp=sum_)))
+
+        string_num = reduce((lambda x, y: str(x)+str(y)), sum_)
+        return string_num
