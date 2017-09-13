@@ -41,7 +41,7 @@ class BigInt:
 #                 temp_Big_int = rev[::-1]
                 self.num = rev[::-1]
                 
-        num_string = reduce((lambda x, y: str(x)+str(y)), sum_[::-1])
+        num_string = reduce((lambda x, y: str(x)+str(y)), rev[::-1])
         return num_string
     
     def adds(self, bigint, multiple = False, inp = [0]):
@@ -124,6 +124,6 @@ class BigInt:
         for i in args:
             sum_ = list(map(int, self.adds(i, multiple=True, inp=sum_)))
         
-        self.num = sum[:]
+        self.num = sum_[:]
         num_string = reduce((lambda x, y: str(x)+str(y)), sum_)
         return num_string
