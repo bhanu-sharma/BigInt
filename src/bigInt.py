@@ -35,7 +35,7 @@ class BigInt:
                 gec.append(temp/10)
                 bx = gec[::-1]
         return bx
-    def adds(self, by, multiple = False, test = [0]):
+    def adds(self, by, multiple = False, inp = [0]):
         '''
         Q2
         Adds other provided big int to original big int
@@ -47,7 +47,7 @@ class BigInt:
         if multiple == False:
             bx = self.num[:]
         if multiple == True:
-            bx = test
+            bx = inp
             
         by = list(map(int, list(str(by))))
         if len(bx) > len(by):
@@ -92,5 +92,5 @@ class BigInt:
         sum_ = bx
         for i in args:
             #by = list(map(int, list(str(i))))
-            sum_ = self.adds(i, multiple=True, test=sum_)
+            sum_ = self.adds(i, multiple=True, inp=sum_)
         return sum_
