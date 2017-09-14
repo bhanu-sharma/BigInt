@@ -23,26 +23,8 @@ class BigInt:
         >>> '1000'
         
         '''
-        temp_Big_int = self.num[:]
-        for i in range(len(temp_Big_int))[::-1]:
-            temp = temp_Big_int[i]
-            if i != 0:
-                temp += 1
-                if temp/10 == 0:
-                    temp_Big_int[i] = temp
-                    break
-                else:
-                    temp_Big_int[i] = temp%10
-            else:
-                temp += 1
-                temp_Big_int[i] = temp%10
-                rev = temp_Big_int[::-1]
-                rev.append(temp/10)
-#                 temp_Big_int = rev[::-1]
-                self.num = rev[::-1]
-                
-        num_string = reduce((lambda x, y: str(x)+str(y)), rev[::-1])
-        return num_string
+        self.adds(self, multiple = True, inp = [1])
+    
     
     def adds(self, bigint, multiple = False, inp = [0]):
         
@@ -103,8 +85,11 @@ class BigInt:
         else: pass
         
         self.num = sum_[::-1]
-        num_string = reduce((lambda x, y: str(x)+str(y)), sum_[::-1])
-        return num_string
+        if multiple == True:
+            num_string = reduce((lambda x, y: str(x)+str(y)), sum_[::-1])
+            return num_string
+        else:
+            pass
     
     def addAll(self, *args):
 
@@ -125,5 +110,15 @@ class BigInt:
             sum_ = list(map(int, self.adds(i, multiple=True, inp=sum_)))
         
         self.num = sum_[:]
-        num_string = reduce((lambda x, y: str(x)+str(y)), sum_)
-        return num_string
+#         num_string = reduce((lambda x, y: str(x)+str(y)), sum_)
+#         return num_string
+
+    def display(self):
+        '''
+        Prints the BigInt.
+        
+        '''
+        num_string = reduce((lambda x, y: str(x)+str(y)), self.num)
+        return int(num_string) 
+    
+    
